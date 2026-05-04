@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SerpCraft — Free SEO Meta Tag Generator</title>
+  <meta name="description" content="Generate optimized meta titles, descriptions & Open Graph tags for better Google rankings. Free SEO tool.">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo"><span class="logo-icon">🔍</span> SerpCraft</a>
+      <div class="nav-links">
+        <a href="#generator" class="nav-link">Generator</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#generator" class="btn btn-sm btn-outline">Generate Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Generate Meta Tags That <span class="gradient-text">Rank Higher</span></h1>
+      <p class="hero-subtitle">Create optimized meta titles, descriptions & Open Graph tags in seconds. Preview exactly how your page looks in Google.</p>
+    </div>
+  </section>
+
+  <section id="generator" class="gen-section">
+    <div class="container">
+      <div class="gen-card">
+        <div class="gen-header">
+          <h2>🔍 SEO Meta Tag Generator</h2>
+          <p class="app-hint">Free — no signup required</p>
+        </div>
+        <div class="gen-body">
+          <div class="input-panel">
+            <div class="form-group">
+              <label for="pageTitle">Page Title (what you want to rank for)</label>
+              <input type="text" id="pageTitle" placeholder="e.g. Best Running Shoes for Flat Feet 2026">
+            </div>
+            <div class="form-group">
+              <label for="pageDesc">Page Description / Content Summary</label>
+              <textarea id="pageDesc" rows="4" placeholder="Describe your page content in detail. This helps generate a compelling meta description."></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="brandName">Brand Name</label>
+                <input type="text" id="brandName" placeholder="e.g. YourBrand">
+              </div>
+              <div class="form-group">
+                <label for="targetKeyword">Target Keyword (optional)</label>
+                <input type="text" id="targetKeyword" placeholder="e.g. running shoes">
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg" onclick="generateMeta()">✨ Generate Meta Tags</button>
+          </div>
+
+          <div class="output-panel">
+            <div class="output-header">
+              <h3>Your Meta Tags</h3>
+              <div class="output-actions">
+                <button class="btn btn-sm btn-outline" onclick="copyAllMeta()">📋 Copy All</button>
+              </div>
+            </div>
+
+            <div id="metaOutput" class="meta-output">
+              <div class="empty-state" id="metaEmpty">
+                <div class="empty-icon">🔍</div>
+                <p>Your optimized meta tags will appear here.</p>
+                <p class="empty-hint">Enter your page details and hit generate!</p>
+              </div>
+            </div>
+
+            <!-- Google Preview -->
+            <div id="googlePreview" class="google-preview" style="display:none;">
+              <h4>📊 Google Search Preview</h4>
+              <div class="preview-result">
+                <div class="preview-url" id="prevUrl"></div>
+                <div class="preview-title" id="prevTitle"></div>
+                <div class="preview-desc" id="prevDesc"></div>
+              </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="metaLoading" class="loading-state" style="display:none;">
+              <div class="spinner"></div>
+              <p>Generating optimized tags...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="how-it-works">
+        <h2>Why Meta Tags Matter</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Title Tag</h3>
+            <p>The #1 on-page SEO factor. Keep it under 60 characters with your target keyword.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Meta Description</h3>
+            <p>Your ad copy in search results. Under 160 chars, include a call-to-action.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Open Graph Tags</h3>
+            <p>Make your links look great when shared on social media. Essential for CTR.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <section id="pricing" class="pricing-section">
+        <h2>Simple Pricing</h2>
+        <p class="pricing-subtitle">Start free. Upgrade when you're ready.</p>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-badge free">Free</div>
+            <h3>Starter</h3>
+            <div class="price">$0<span>/forever</span></div>
+            <ul class="feature-list">
+              <li>✅ Unlimited meta tag generation</li>
+              <li>✅ Google preview</li>
+              <li>✅ OG & Twitter card tags</li>
+              <li>✅ Copy to clipboard</li>
+              <li>❌ Bulk generation</li>
+              <li>❌ API access</li>
+            </ul>
+            <button class="btn btn-outline btn-lg" onclick="document.getElementById('pageTitle').focus()">Generate Free</button>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-badge pro">PRO</div>
+            <h3>Pro</h3>
+            <div class="price">$9<span>/month</span></div>
+            <ul class="feature-list">
+              <li>✅ Everything in Free</li>
+              <li>✅ Bulk generation (50 URLs)</li>
+              <li>✅ SEO audit reports</li>
+              <li>✅ SERP tracking</li>
+              <li>✅ API access</li>
+              <li>✅ Priority support</li>
+            </ul>
+            <button class="btn btn-primary btn-lg">Upgrade to Pro</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><span class="logo-icon">🔍</span> SerpCraft</div>
+      <p>Made for webmasters who want to rank higher.</p>
+      <p class="footer-note">&copy; 2026 SerpCraft. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/src/js/app.js"></script>
+</body>
+</html>
