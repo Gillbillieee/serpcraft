@@ -1,0 +1,3 @@
+# Google AdSense ads.txt file for Gillbillieee Tools
+# Publisher ID: pub-8410225250422623
+google.com, pub-8410225250422623, DIRECT, f08c47fec0942fa0
